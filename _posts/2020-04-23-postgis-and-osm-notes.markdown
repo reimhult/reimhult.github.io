@@ -66,5 +66,9 @@ CREATE TABLE border_roads AS
 
 ## Math test
 {% raw %}
+  $$a^+b^2=c^2$$
+{% endraw %}
+
+{% raw %}
   $$\frac{e^{\pi(n-\frac{1}{24})^{1/2}}}{4 \cdot 3^{1/4}(n-\frac{1}{24})^{3/4}}$$
 {% endraw %}
