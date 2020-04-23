@@ -27,7 +27,9 @@ twitter_username: ""
 github_username:  reimhult
 
 # Build settings
-theme: midnight
+markdown: kramdown
+theme: minima
+remote_theme: midnight
 plugins:
   - jekyll-feed
 
