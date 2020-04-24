@@ -6,18 +6,14 @@ categories: postgis osm openstreetmap qgis
 ---
 
 # Installation
-
 ## Enable PostGIS extension
-
     -- Enable PostGIS (as of 3.0 contains just geometry/geography)
     CREATE EXTENSION postgis;
     -- enable raster support (for 3+)
     CREATE EXTENSION postgis_raster;
     -- Enable Topology
     CREATE EXTENSION postgis_topology;
-    
 ## QGIS
-
 ## Saga
 https://sourceforge.net/p/saga-gis/wiki/Compiling%20SAGA%20on%20Linux/
 
@@ -26,7 +22,7 @@ Version 2.3.lts is required
 
 # Downloading and ingesting map data
 ## Download
-`https://download.geofabrik.de/`
+[Geofabrik](https://download.geofabrik.de/)
 ## Merge
 To speed up the conversion and ingesting of OSM data into PostGIS, it is recommended to first merge the pbf files. This is because the `osm2pgsql` tool is very slow when appending to an existing PostGIS database.
 
@@ -40,7 +36,9 @@ There are several tools available to do the merging (`osmium`, `osmosis`, `osmco
 # Visualizaion
 ## QGIS
 ### XYZ tiles
-https://www.spatialbias.com/2018/02/qgis-3.0-xyz-tile-layers/
+[Link to an overview of tile layer providers](https://www.spatialbias.com/2018/02/qgis-3.0-xyz-tile-layers/ "Spatial bias")
+
+There is a convenient plugin in QGIS call QuickMapServices, where tile providers are collected in a conventient and searchable way. It can be found in the plugin installer in QGIS.
 
 # SQL
 ## Example queries
@@ -69,7 +67,7 @@ CREATE TABLE border_roads AS
 ;
 {% endhighlight %}
 
-## Math test
+# Math test
 {% raw %}
   $$a^2+b^2=c^2$$
 {% endraw %}
