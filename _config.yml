@@ -28,8 +28,8 @@ github_username:  reimhult
 
 # Build settings
 markdown: kramdown
-theme: minima
-#remote_theme: midnight
+#theme: minima
+remote_theme: midnight
 plugins:
   - jekyll-feed
 

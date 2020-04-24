@@ -4,8 +4,11 @@ title:  "Notes on PostGIS, OpenStreetMap and QGIS"
 date:   2020-04-23 12:53:02 +0200
 categories: postgis osm openstreetmap qgis
 ---
+
 # Installation
+
 ## Enable PostGIS extension
+
     -- Enable PostGIS (as of 3.0 contains just geometry/geography)
     CREATE EXTENSION postgis;
     -- enable raster support (for 3+)
@@ -13,6 +16,7 @@ categories: postgis osm openstreetmap qgis
     -- Enable Topology
     CREATE EXTENSION postgis_topology;
 ## QGIS
+
 ## Saga
 https://sourceforge.net/p/saga-gis/wiki/Compiling%20SAGA%20on%20Linux/
 
@@ -66,7 +70,7 @@ CREATE TABLE border_roads AS
 
 ## Math test
 {% raw %}
-  $$a^+b^2=c^2$$
+  $$a^2+b^2=c^2$$
 {% endraw %}
 
 {% raw %}
