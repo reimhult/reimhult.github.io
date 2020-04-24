@@ -15,6 +15,7 @@ categories: postgis osm openstreetmap qgis
     CREATE EXTENSION postgis_raster;
     -- Enable Topology
     CREATE EXTENSION postgis_topology;
+    
 ## QGIS
 
 ## Saga
