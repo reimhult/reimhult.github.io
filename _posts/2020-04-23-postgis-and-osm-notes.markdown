@@ -4,8 +4,12 @@ title:  "Notes on PostGIS, OpenStreetMap and QGIS"
 date:   2020-04-23 12:53:02 +0200
 categories: postgis osm openstreetmap qgis
 ---
+# Prequel
+This post is mainly a collection of notes on installation and basic usage of a few important tools for geo-spatial analysis. It is a work in progress.
 
 # Installation
+## Postgresql and PostGIS
+TBD
 ## Enable PostGIS extension
     -- Enable PostGIS (as of 3.0 contains just geometry/geography)
     CREATE EXTENSION postgis;
@@ -13,12 +17,18 @@ categories: postgis osm openstreetmap qgis
     CREATE EXTENSION postgis_raster;
     -- Enable Topology
     CREATE EXTENSION postgis_topology;
+
 ## QGIS
+Currently, the version available in the Ubuntu APT repository is 3.4, which is quite old. The latest LTS version is 3.10 and the latest release is 3.12, and there have been many bug fixes and improvements done since version 3.4. Information about how to install a newer version can be found [here](https://qgis.org/en/site/forusers/alldownloads.html#debian-ubuntu).
+
+Create a virtual environment with Python version 2.7 to make all plugins work.
+
 ## Saga
-https://sourceforge.net/p/saga-gis/wiki/Compiling%20SAGA%20on%20Linux/
+Installing SAGA on a recent version of Ubuntu is a bit cumbersome. The long time stable version of SAGA is quite old, it's version 2.3.lts released in 2017. The latest released version is 7.3, but QGIS is only compatible with the LTS version. This version is not available in any apt repository for recent versions of Ubuntu, so it needs to be compiled from source unless you are running 16.04 or older.
 
-Version 2.3.lts is required
-
+Here's how to do it:
+* Clone the 2.3.lts release from the SAGA git repository: `git clone --branch release-2-3-lts git://git.code.sf.net/p/saga-gis/code saga-gis-code`
+* Follow the [compilation instructions](https://sourceforge.net/p/saga-gis/wiki/Compiling%20SAGA%20on%20Linux/).
 
 # Downloading and ingesting map data
 ## Download
@@ -38,7 +48,7 @@ There are several tools available to do the merging (`osmium`, `osmosis`, `osmco
 ### XYZ tiles
 [Link to an overview of tile layer providers](https://www.spatialbias.com/2018/02/qgis-3.0-xyz-tile-layers/ "Spatial bias")
 
-There is a convenient plugin in QGIS call QuickMapServices, where tile providers are collected in a conventient and searchable way. It can be found in the plugin installer in QGIS.
+There is a nice plugin in QGIS call QuickMapServices, where tile providers are collected in a convenient and searchable way. It can be found in the plugin installer in QGIS.
 
 # SQL
 ## Example queries
@@ -67,7 +77,7 @@ CREATE TABLE border_roads AS
 ;
 {% endhighlight %}
 
-# Math test
+# Some mathematics :)
 {% raw %}
   $$a^2+b^2=c^2$$
 {% endraw %}
