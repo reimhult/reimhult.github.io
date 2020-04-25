@@ -35,7 +35,7 @@ The QGIS plugin framework requires Python 2.x. A convenient way to run QGIS with
 ## Saga
 Saga is an abbreviation for System for Automated Geoscientific Analyses. It is a comprehensive suite of GIS tools, all open-source, and QGIS has support for running SAGA tools directly from the QGIS Processing toolbox.
 
-Installing SAGA on a recent version of Ubuntu is a bit cumbersome. The long time stable version of SAGA is quite old, it's version 2.3.lts released in 2017. The latest released version is 7.3, but QGIS is only compatible with the LTS version. This version is not available in any apt repository for recent versions of Ubuntu, so it needs to be compiled from source unless you are running 16.04 or older.
+Installing SAGA on a recent version of Ubuntu is a bit cumbersome. The long term stable version of SAGA is quite old, it's version 2.3.lts released in 2017. The latest release is 7.6, but QGIS is only compatible with the LTS version. However, this version is not available in any apt repository for recent releases of Ubuntu, so it needs to be compiled from source unless you are running Ubuntu 16.04 or older.
 
 Here's how to do it:
 * Clone the 2.3.lts release from the SAGA git repository: `git clone --branch release-2-3-lts git://git.code.sf.net/p/saga-gis/code saga-gis-code`
@@ -88,11 +88,11 @@ CREATE TABLE border_roads AS
 ;
 {% endhighlight %}
 
-# Some mathematics :)
+# Some mathematics to test MathJax in Jekyll :)
 {% raw %}
-  $$a^2+b^2=c^2$$
+$$a^2+b^2=c^2$$
 {% endraw %}
 
 {% raw %}
-  $$\frac{e^{\pi(n-\frac{1}{24})^{1/2}}}{4 \cdot 3^{1/4}(n-\frac{1}{24})^{3/4}}$$
+$$\boxed{\displaystyle\int_0^1\dfrac{\ln\left(x^4-2x^2+5\right)-\ln\left(5x^4-2x^2+1\right)}{1-x^2}\ dx=\pi\arctan\left(\sqrt{\dfrac{\sqrt{5}-1}{2}}\right)}$$
 {% endraw %}
