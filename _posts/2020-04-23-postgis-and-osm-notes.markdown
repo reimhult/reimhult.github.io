@@ -9,21 +9,32 @@ This post is mainly a collection of notes on installation and basic usage of a f
 
 # Installation
 ## Postgresql and PostGIS
-TBD
-## Enable PostGIS extension
-    -- Enable PostGIS (as of 3.0 contains just geometry/geography)
-    CREATE EXTENSION postgis;
-    -- enable raster support (for 3+)
-    CREATE EXTENSION postgis_raster;
-    -- Enable Topology
-    CREATE EXTENSION postgis_topology;
+### Links
+* [Installng Postgresql](https://www.postgresql.org/download/linux/ubuntu/)
+* [Installing PostGIS](https://wiki.postgresql.org/wiki/Apt)
+
+### Enable PostGIS extension
+To use the PostGIS functionality, it needs to be enabled by creating the relevant extensions. In `psql`, create the database (`CREATE DATABASE <db name>;`), switch to the database (`\c <db name>`) and run the following lines of code:
+{% highlight sql %}
+-- Enable PostGIS (as of 3.0 contains just geometry/geography)
+CREATE EXTENSION postgis;
+-- enable raster support (for 3+)
+CREATE EXTENSION postgis_raster;
+-- Enable Topology
+CREATE EXTENSION postgis_topology;
+{% endhighlight %}
 
 ## QGIS
 Currently, the version available in the Ubuntu APT repository is 3.4, which is quite old. The latest LTS version is 3.10 and the latest release is 3.12, and there have been many bug fixes and improvements done since version 3.4. Information about how to install a newer version can be found [here](https://qgis.org/en/site/forusers/alldownloads.html#debian-ubuntu).
 
-Create a virtual environment with Python version 2.7 to make all plugins work.
+The QGIS plugin framework requires Python 2.x. A convenient way to run QGIS without problems is to create a virtual environment with Python version 2.7 and then activate this before starting QGIS.
+
+* Create virtual environment: `conda create --name qgis python=2.7`
+* Activate: `conda activate qgis`
 
 ## Saga
+Saga is an abbreviation for System for Automated Geoscientific Analyses. It is a comprehensive suite of GIS tools, all open-source, and QGIS has support for running SAGA tools directly from the QGIS Processing toolbox.
+
 Installing SAGA on a recent version of Ubuntu is a bit cumbersome. The long time stable version of SAGA is quite old, it's version 2.3.lts released in 2017. The latest released version is 7.3, but QGIS is only compatible with the LTS version. This version is not available in any apt repository for recent versions of Ubuntu, so it needs to be compiled from source unless you are running 16.04 or older.
 
 Here's how to do it:
