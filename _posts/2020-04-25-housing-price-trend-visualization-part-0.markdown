@@ -4,7 +4,7 @@ title:  Visualizing housing price trends with QGIS, part 0
 date:   2020-04-25 15:47:02 +0200
 categories: postgis osm openstreetmap qgis saga
 ---
-This is an introduction to a series of posts to document the results of some self-study sessions carried out during the Covid-19 pandemic period, with its times of isolation and short-term layoffs. Geospatial analysis is very useful for many industries and this was a great opportunity to deepen my knowledge in the field. I have focused on QGIS, which is a massive open-sourced piece GIS (Geographic Information System) software, providing a stack of tools from backend data access to visualization and map generation.
+This is an introduction to a series of posts to document the results of some self-study sessions carried out during the Covid-19 pandemic period, with its times of isolation and short-term layoffs. Geospatial analysis is very useful for many industries and this was a great opportunity to deepen my knowledge in the field. I have focused on QGIS, which is a massive open-sourced piece of GIS software (Geographic Information System), providing a stack of tools from backend data access to visualization and map generation.
 
 I've always been a fan of learning by doing and, having access to a PostGIS database with housing sales prices in Sweden (enabling this access might become the topic for another blog post in the future), I was considering how to utilize this for the purpose of learning new tools and methodology.
 
