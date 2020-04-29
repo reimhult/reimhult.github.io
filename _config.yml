@@ -1,12 +1,12 @@
 # Welcome to Jekyll!
-title: "Reimhult's Random Ramblings"
+title: Reimhult's Random Ramblings
 author:
   name: Daniel Reimhult
   email: daniel@reimhu.lt
+tagline: A repository of interesting things
 description: > # this means to ignore newlines until "show_excerpts:"
-  "Reimhult's Random Ramblings"
-
-show_excerpts: false # set to true to show excerpts on the homepage
+  Reimhult's Random Ramblings
+show_excerpts: true # set to true to show excerpts on the homepage
 
 # Minima date format
 # refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this

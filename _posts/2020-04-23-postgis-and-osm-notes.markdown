@@ -4,8 +4,7 @@ title:  "Notes on PostGIS, OpenStreetMap and QGIS"
 date:   2020-04-23 12:53:02 +0200
 categories: postgis osm openstreetmap qgis
 ---
-# Preface
-This post is mainly a collection of notes on installation and basic usage of a few important tools for geo-spatial analysis. It is a work in progress.
+**Preface:** This post is mainly a collection of notes on installation and basic usage of a few important tools for geo-spatial analysis. It is a work in progress.
 
 # Installation
 ## Postgresql and PostGIS
