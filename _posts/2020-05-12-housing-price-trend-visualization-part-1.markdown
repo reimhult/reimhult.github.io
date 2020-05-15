@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Visualizing housing price trends with QGIS, part 1 - data overview and some queries
+title:  Visualizing housing price trends with QGIS, part 1 - Data overview and some queries
 date:   2020-05-12 14:36:00 +0200
 categories: postgis sql osm openstreetmap qgis saga
 ---
