@@ -6,13 +6,13 @@ categories: postgis osm openstreetmap qgis saga
 ---
 This is an introduction to a series of posts to document the results of some self-study sessions carried out during the Covid-19 pandemic period, with its times of isolation and short-term layoffs. Geospatial analysis is very useful for many industries and this was a great opportunity to deepen my knowledge in the field. I have focused on QGIS, which is a massive open-sourced piece of GIS software (Geographic Information System), providing a stack of tools from backend data access to visualization and map generation.
 
-I've always been a fan of learning by doing and, having access to a PostGIS database with housing sales prices in Sweden (enabling this access might become the topic for another blog post in the future), I was considering how to utilize this for the purpose of learning new tools and methodology.
+I've always been a fan of learning by doing and, having access to a PostGIS database with housing sales prices in Sweden (enabling this access might become the topic for another post in the future), I was considering how to utilize this for the purpose of learning new tools and methodology.
 
 Housing price trends are freely available on the Internet, e.g. at [Mäklarstatistik](https://www.maklarstatistik.se/), and they are presented in the obvious way: aggregated time series split by property type, city and district.
 
 ![Mäklarstatistik example](/images/maklarstatistik.png "Mäklarstatistik example")
 
-This is of course very useful and accessible, but I was thinking about a way to present the price trends on a map, covering many cities and/or district at the same time. So, the end goal of this little project was quite clear to me from the start:
+This is of course very useful and accessible, but I was thinking about a way to present the price trends on a map, covering many cities and/or district at the same time. So, the end goal of this little project became apparent:
 
 **How do we go about to visualize housing price trends in a way reminiscent of weather forecasts, where contour plots of the air pressure and heat map coloring are animated to show the movement of weather systems and changes of temperature?**
 
@@ -23,4 +23,6 @@ So, perhaps jumping the gun a bit, here is an example of the result (still a wor
 <iframe src="https://player.vimeo.com/video/410120629" width="640" height="386" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 <p><figcaption><a href="https://vimeo.com/410120629">Apartment price trend, Stockholm 2013-2020</a> from <a href="https://vimeo.com/user113431800">Daniel Reimhult</a> on <a href="https://vimeo.com">Vimeo</a>.</figcaption></p>
 
-There are a few steps involved to go from the apartment sales data points to the above animation. This will be the topic for future posts in this series.
+There are a few steps involved to go from the apartment sales data points to the above animation and this, and other things, will be the topic for future posts in this series.
+
+[Go to Part 1]({% post_url 2020-05-12-housing-price-trend-visualization-part-1 %})

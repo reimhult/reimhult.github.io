@@ -4,9 +4,9 @@ title:  Visualizing housing price trends with QGIS, part 1 - data overview and s
 date:   2020-05-12 14:36:00 +0200
 categories: postgis sql osm openstreetmap qgis saga
 ---
-So let's have a look at the data! All property sales are stored as a row in a PostGIS enabled Postgresql database table. For every sale, there is information about e.g. the property type (villa, apartment, plot of land etc), the number of rooms, the sales date and price. And of course, since this will eventually be about geo-spatial analysis, the location is available as a PostGIS geometry datatype.
+So let's have a look at the data! All property sales are stored as a row in a PostGIS enabled PostgreSQL database table. For every sale, there is information about e.g. the property type (villa, apartment, plot of land etc), the number of rooms, the sales date and price. And of course, since this will eventually be about geospatial analysis, the location is available as a PostGIS geometry datatype.
 
-One example of a table entry of a house sale is shown below:
+An example of a table entry of a house sale is shown below:
 
 | Column | SQL table column name | Value |
 |---|---|
@@ -29,11 +29,11 @@ One example of a table entry of a house sale is shown below:
 | Longitude | lon | 13.99752036 |
 | Geometry | way | 0101000020110F0000F777698C00BD374166BF31F1EEC75C41 |
 
-Let's start by doing some traditional trend analysis using SQL statements. We want to answer the question:
+In this part, we'll get started by doing some traditional trend analysis using SQL statements. We want to answer the question:
 
-> How does the monthly price trend look for apartments in the largest cities of Sweden during the last year?
+> What is the monthly price trend for apartments in the largest cities of Sweden during the last 12 months?
 
-I'll start with posting the end result, and then get into the SQL queries to generate it.
+I'll start with posting the desired end result, and then go into the details of the SQL queries to generate it.
 
 #### Desired result
 
@@ -52,13 +52,12 @@ I'll start with posting the end result, and then get into the SQL queries to gen
 |2020-03-01 |     108.5 |    102.3 |  97.2 |    99.6 | 100.0
 |2020-04-01 |     102.2 |    103.3 | 100.1 |    98.7 | 100.0
 
-So, we can see a significant drop of the housing prices during the one or two months in Stockholm, Malmö, Uppsala and Solna, but not in Göteborg. Note that this is based on the median price
+This table shows that there is a considerable drop in the median price per area unit during March and/or April in Stockholm, Malmö, Uppsala and Solna. Interestingly, the same effect is not showing in Göteborg. However, this is based on the very blunt tool provided by the median. Examining the price distribution more carefully might reveal another story. (This might be the topic for another future post, so let's leave it the way it is for now.)
 
+The SQL query to achieve this table will be built up in three steps below. First, the median price for the big municipalities are calculated. Second, the normalization to the first month is done. And lastly, the resulting table is pivoted to create the desired output.
 
+#### Query 1 - Calculate the median price per month for selected cities
 
-The first query is to get the median price per month for the municipalities having more than 2000 sales during the last year.
-
-#### Query
 {% highlight sql %}
 SELECT date_trunc('month', sold_date)::date AS month,
        kommun,
@@ -97,7 +96,7 @@ GROUP BY 1,2
 
 Now, let's normalize the median prices to the first value of the time period (May 2019) to represent the percentage change. This is done using the above query as a sub-query and scaling by the first value of a sorted list of price values for all municipalities.
 
-#### Query
+#### Query 2 - Normalize to the first month in the period
 {% highlight sql %}
 SELECT month,
        kommun,
@@ -144,7 +143,9 @@ FROM (SELECT date_trunc('month', sold_date)::date AS month,
 |2019-08-01 | Malmö kommun      | 104.13859812761254
 |...|...|...
 
-Now, let's use the `crosstab` function available in the [`table_func` extension](https://www.postgresql.org/docs/12/tablefunc.html) of Postgresql. This enables the creation of pivot tables. The full query above then needs to be passed as a string to the `crosstab` function.
+To get to the final result, we want to distribute the municipalities (kommuns) to separate columns, i.e. pivot on the kommun column. This functionality is available in the in the [`table_func` extension](https://www.postgresql.org/docs/12/tablefunc.html) of PostgreSQL by means of the `crosstab` function. The full query above (Query 2) needs to be passed as a string to this function, with the addition the `ORDER` keyword to ensure that the rows are ordered correctly.
+
+#### Query 3 - Make a pivot table
 
 {% highlight sql %}
 SELECT *                                                                             
@@ -203,4 +204,6 @@ AS ct("month" date,
 |2020-03-01 |     108.5 |    102.3 |  97.2 |    99.6 | 100.0
 |2020-04-01 |     102.2 |    103.3 | 100.1 |    98.7 | 100.0
 
-In the next post we'll dive more into the geo-spatial information available and way to visualize the housing price trends in QGIS.
+And voilà, we have reached the desired result.
+
+In the next post we'll <sub><sup>probably</sup></sub> dive more into the geo-spatial information available and ways to visualize the housing price trends in QGIS.
