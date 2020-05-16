@@ -143,7 +143,7 @@ FROM (SELECT date_trunc('month', sold_date)::date AS month,
 |2019-08-01 | Malmö kommun      | 104.13859812761254
 |...|...|...
 
-To get to the final result, we want to distribute the municipalities (kommuns) to separate columns, i.e. pivot on the kommun column. This functionality is available in the [`table_func` extension](https://www.postgresql.org/docs/12/tablefunc.html) of PostgreSQL by means of the `crosstab` function. The full query above (Query 2) needs to be passed as a string to this function, with the addition the `ORDER` keyword to ensure that the rows are ordered correctly.
+To get to the final result, we want to distribute the municipalities (kommuns) to separate columns, i.e. pivot on the kommun column. This functionality is available in the [`table_func` extension](https://www.postgresql.org/docs/12/tablefunc.html) of PostgreSQL by means of the `crosstab` function. The full query above (Query 2) needs to be passed as a string to this function, with the addition of the `ORDER` keyword to ensure that the rows are ordered correctly.
 
 #### Query 3 - Make a pivot table
 
