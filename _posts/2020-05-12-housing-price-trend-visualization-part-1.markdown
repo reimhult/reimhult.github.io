@@ -153,30 +153,30 @@ FROM crosstab('SELECT month,
                kommun,
                100*median/first_value(median) OVER (PARTITION BY kommun
                                                     ORDER BY month) AS norm_price
-        FROM (SELECT date_trunc(''month'', sold_date)::date AS month,
-                     kommun,
-                     percentile_disc(0.5) WITHIN GROUP (ORDER BY price_per_area) AS median
-              FROM sold_properties
-              WHERE property_type LIKE ''Bostadsr%'' AND
-                    sold_date BETWEEN ''2019-05-01'' AND ''2020-04-30'' AND
-                    kommun IN (SELECT kommun
-                               FROM sold_properties
-                               WHERE property_type LIKE ''Bostadsr%'' AND
-                                     sold_date BETWEEN ''2019-05-01'' AND ''2020-04-30''
-                               GROUP BY kommun
-                               HAVING count(*) > 2000
-                               )
-              GROUP BY 1,2
-             )
-             AS monthly_price
-             ORDER BY 1,2',
-              $$VALUES('Stockholms kommun'::text),
-                      ('Göteborgs kommun'::text),
-                      ('Malmö kommun'::text),
-                      ('Uppsala kommun'::text),
-                      ('Solna kommun'::text)
-              $$                     
-)                       
+               FROM (SELECT date_trunc(''month'', sold_date)::date AS month,
+                            kommun,
+                            percentile_disc(0.5) WITHIN GROUP (ORDER BY price_per_area) AS median
+                     FROM sold_properties
+                     WHERE property_type LIKE ''Bostadsr%'' AND
+                           sold_date BETWEEN ''2019-05-01'' AND ''2020-04-30'' AND
+                           kommun IN (SELECT kommun
+                                      FROM sold_properties
+                                      WHERE property_type LIKE ''Bostadsr%'' AND
+                                            sold_date BETWEEN ''2019-05-01'' AND ''2020-04-30''
+                                      GROUP BY kommun
+                                      HAVING count(*) > 2000
+                                      )
+                     GROUP BY 1,2
+                    )
+                    AS monthly_price
+               ORDER BY 1,2',
+               $$VALUES('Stockholms kommun'::text),
+                       ('Göteborgs kommun'::text),
+                       ('Malmö kommun'::text),
+                       ('Uppsala kommun'::text),
+                       ('Solna kommun'::text)
+               $$                     
+              )                       
 AS ct("month" date,
       "Stockholm" numeric(5,1),
       "Göteborg" numeric(5,1),
