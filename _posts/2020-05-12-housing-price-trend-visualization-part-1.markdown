@@ -29,7 +29,7 @@ An example of a table entry of a house sale is shown below:
 | Longitude | lon | 13.99752036 |
 | Geometry | way | 0101000020110F0000F777698C00BD374166BF31F1EEC75C41 |
 
-In this part, we'll get started by doing some traditional trend analysis using SQL statements. We want to answer the question:
+In this part, we'll get started by doing some basic traditional trend analysis using SQL. We want to answer the question:
 
 > What is the monthly price trend for apartments in the largest cities of Sweden during the last 12 months?
 
@@ -52,7 +52,7 @@ I'll start with posting the desired end result, and then go into the details of 
 |2020-03-01 |     108.5 |    102.3 |  97.2 |    99.6 | 100.0
 |2020-04-01 |     102.2 |    103.3 | 100.1 |    98.7 | 100.0
 
-This table shows that there is a considerable drop in the median price per area unit during March and/or April in Stockholm, Malmö, Uppsala and Solna. Interestingly, the same effect is not showing in Göteborg. However, this is based on the very blunt tool provided by the median. Examining the price distribution more carefully might reveal another story. (This might be the topic for another future post, so let's leave it the way it is for now.)
+This table shows that there is a considerable drop in the median price per area unit during March and/or April in Stockholm, Malmö, Uppsala and Solna. Interestingly, the same effect is not showing in Göteborg. However, this is based on the very blunt tool provided by the median. Examining the price distribution more carefully might reveal another story. (This may be the topic for another future post, so let's leave it the way it is for now.)
 
 The SQL query to achieve this table will be built up in three steps below. First, the median price for the big municipalities are calculated. Second, the normalization to the first month is done. And lastly, the resulting table is pivoted to create the desired output.
 
@@ -143,7 +143,7 @@ FROM (SELECT date_trunc('month', sold_date)::date AS month,
 |2019-08-01 | Malmö kommun      | 104.13859812761254
 |...|...|...
 
-To get to the final result, we want to distribute the municipalities (kommuns) to separate columns, i.e. pivot on the kommun column. This functionality is available in the in the [`table_func` extension](https://www.postgresql.org/docs/12/tablefunc.html) of PostgreSQL by means of the `crosstab` function. The full query above (Query 2) needs to be passed as a string to this function, with the addition the `ORDER` keyword to ensure that the rows are ordered correctly.
+To get to the final result, we want to distribute the municipalities (kommuns) to separate columns, i.e. pivot on the kommun column. This functionality is available in the [`table_func` extension](https://www.postgresql.org/docs/12/tablefunc.html) of PostgreSQL by means of the `crosstab` function. The full query above (Query 2) needs to be passed as a string to this function, with the addition the `ORDER` keyword to ensure that the rows are ordered correctly.
 
 #### Query 3 - Make a pivot table
 
