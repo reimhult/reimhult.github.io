@@ -10,7 +10,7 @@ I've always been a fan of learning by doing and, having access to a PostGIS data
 
 Housing price trends are freely available on the Internet, e.g. at [Mäklarstatistik](https://www.maklarstatistik.se/), and they are presented in the obvious way: aggregated time series split by property type, city and district.
 
-![Mäklarstatistik example](/images/maklarstatistik.png "Mäklarstatistik example")
+[![Mäklarstatistik example](/images/maklarstatistik.png "Mäklarstatistik example")](/images/maklarstatistik.png)
 
 This is of course very useful and accessible, but I was thinking about a way to present the price trends on a map, covering many cities and/or district at the same time. So, the end goal of this little project became apparent:
 
