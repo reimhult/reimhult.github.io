@@ -3,6 +3,7 @@ layout: post
 title:  Visualizing housing price trends with QGIS, part 2 - Malmö visualized
 date:   2020-06-08 16:47:00 +0200
 categories: postgis sql osm openstreetmap qgis saga
+published: false
 ---
 The last part involved trend analysis of the housing prices during the last year. In this part, we will step back a bit and create visualizations in QGIS that are static in nature. These will be used later to create the animated trend visualizations showed in the introduction.
 
